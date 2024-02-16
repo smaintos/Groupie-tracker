@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpo rt" content="width=device-width, initial-scale=1.0">
+    <title>Artiste</title>
+    <link rel="stylesheet" href="/static/artist.css" />
+</head>
+<body>
+    <body>
+        <div class="container">
+          <div id="top">
+           <h3 class="center-align tribute">Je découvre ... </h3>
+           <h1 class="center-align"><div>{{.Artist.Name}}</div></h1>
+            <h5 class="center-align">date de création : <div>{{.Artist.CreationDate}}</div></h5>
+           <h3 class="center-align">Membre du groupe : <div>{{.Artist.Members}}</div></h3>
+          </div>
+          
+          <div id="bio-card">
+            <div class="row">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="{{.Artist.Image}}"></img>
+                  </div>
+                  <div class="card-content">
+                    <p class="center-align">Date de création premier album: <div>{{.Artist.FirstAlbum}}</div></p>
+                  </div>
+                  </div>
+                </div>
+            
+              <div class="colonne">
+                <p class="center-align">Locations : </p>
+                  <div>
+                      {{range $place, $dates := .Relations.DatesLocations}}
+                        <div class="info-global-place">
+                          {{$place}} :
+                          {{range $date := $dates}}
+                          {{$date}}
+                          {{end}}
+                        </div>
+                      {{end}}
+                  </div>
+                <a href="/"><button class="retour">Retour</button></a>
+              </div>
+            </div>  
+          </div>
+      </body>
+      </html>

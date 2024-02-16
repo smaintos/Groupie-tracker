@@ -1,0 +1,28 @@
+body {
+    position: relative;
+    background: #282c34;
+    font-size: 2vmin;
+    font-family: JetBrains Mono, monospace;
+    color: #e4bb68;
+  }
+
+.error {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
+.retour{
+    color: #e4bb68;
+    border-radius: 100px;
+    background:   #626567;
+    border: 2px solid #e4bb68;
+    font-family: "montserrat",sans-serif;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    min-width: 200px;
+    cursor: pointer;
+    position: static;
+    display: block;
+    text-decoration: underline;
+  }

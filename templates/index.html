@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Artiste-tracker</title>
+        <link rel="stylesheet" href="/static/style.css" />
+        <script type="text/javascript" src="/static/style.js" defer></script>
+        <link rel="icon" type="image/png" sizes="16x16" href="" />
+    </head>
+    <header>
+        <h1>System<span style="color:white;">.<span style="color:#e06c75;">out</span>.</span><span style="color:#61afef;">println</span>("</h1>
+           <div class="string">
+             <h1 class="greeting">
+                <h1 class="s1">Artiste-tracker</h1>
+                <h1 class="s2">retrouve toutes</h1>
+                <h1 class="s3">les informations</h1>
+                <h1 class="s4">de tes artistes</h1>
+            </h1>
+            </div>
+        <h1 class="closure">");</h1> 
+    </header>
+    <body>
+        <div>
+            <div class="middle">
+                <button id="togg1" class="btn btn1">Filtres</button>
+            </div>
+            <form method="post" action="/search" class="search">
+                <label class="labelSearch">
+                    <input type="text" id="Search_Bar" name="q" class="inputSearch" autocomplete="off">
+                <div id="suggestion"></div>
+                </label>
+                <input class="buttom" type="submit" value="Entrer">
+            <div id="suggestion"></div>
+            </form>
+        </div>
+        <form method="post" action="/Artist" class="filtre" name="filtre">
+            <div id="d12">
+                <p>membres </p>
+                    <span id="rangeValue">1</span>
+                    <input class="slider" type="range" value="1" min="1" max="8" name="input-members" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"id="myRange"></input>
+                <div class="barre"></div>   
+                <p>date de création </p>
+                    <span id="rangeValue3">1958</span>
+                    <input class="slider" type="range" value="1" min="1958" max="2015" name="input-date" onChange="rangeSlide3(this.value)" onmousemove="rangeSlide3(this.value)"id="myRange3"></input>
+                <div class="barre"></div>
+                <div>
+                    <label for="location-filter">location:</label>
+                    <select id="location-filter" name="location-filter">
+                        <option value="">Tous les emplacements</option>
+                        {{range .}}
+                        <option value="{{.Locations}}">{{.Locations}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="barre"></div>
+                    <label for="start">date du premier album: </label>
+                    <input type="date" id="start" name="trip-start"value="2018-07-22" min="1967-05-7" max="2018-11-15">
+                <div class="barre"></div>
+                <input class="btn2" type="submit" value="Filtres">
+                <a href="/" class="btn3">Effacer les filtres</a>
+            </div> 
+        </form> 
+        <div class="artiste">
+            {{range $Artiste := .}}
+            <div class="card" id="card1"><a href="/artiste?id={{ $Artiste.ID }}" >
+                <div class="img">
+                      <img src="{{$Artiste.Image}}" > 
+                </div>
+                <div class="content">
+                    <div class="details">
+                       <h2>{{$Artiste.Name}}</h2>
+                    </div>
+                </div>
+            </div></a>
+            {{end}}
+        </div>
+        <script type="text/javascript">
+            const apiObj = {{ . }};
+        </script>
+        <script src="/static/sugg.js"></script>
+    </body>
+</html>
